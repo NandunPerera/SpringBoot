@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -21,6 +22,7 @@ public class Student {
     private Long id;
 
     @NotBlank(message = "Student number should be fill")
+    @Pattern(regexp = "^(CS|CT|ET)/2018/0[0-9]{2}$")
     private String studentNumber;
 
     @NotBlank(message = "Student name should be fill")
@@ -37,7 +39,7 @@ public class Student {
 
     @NotBlank
     @Size(max = 10, min = 10)
-    @NumberFormat
+    @Pattern(regexp = "^[0-9]{10}$")
     private String phoneNo;
 
 
