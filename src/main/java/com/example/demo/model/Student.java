@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import com.sun.istack.NotNull;
+import org.springframework.format.annotation.NumberFormat;
 
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Student {
@@ -28,26 +30,26 @@ public class Student {
     @NotBlank(message = "Student city should be fill")
     private String city;
 
+    @NotBlank(message = "Student city should be fill")
     @Email
     private String email;
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    @NotBlank
+    @Size(max = 10, min = 10)
+    @NumberFormat
+    private String phoneNo;
 
 
     public Student() {
     }
 
-    public Student(String studentNumber, String studentName, String city,String email) {
+    public Student(String studentNumber, String studentName, String city,String email , String phoneNo) {
         this.studentNumber = studentNumber;
         this.studentName = studentName;
         this.city = city;
         this.email = email ;
+        this.phoneNo = phoneNo ;
     }
 
     public void setId(Long id) {
@@ -81,4 +83,20 @@ public class Student {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
 }
